@@ -1,4 +1,8 @@
 "use client";
+
+import Link from 'next/link';
+import Image from 'next/image'
+
 const Page = () => {
   return (
     <>
@@ -65,39 +69,6 @@ const Page = () => {
                     >
                       సామాన్యుని గుండె చప్పుడు..... అలికిడి
                     </p>
-                    {/* <p>
-                      <img
-                        className="pull-left"
-                        src="images/news/news-details1.jpg"
-                        alt
-                      />
-                    </p> */}
-                    {/* <p style={{ textAlign: "justify" }}>
-                       సామాన్యుని కన్నీటి గాథ, అన్నదాత ఆవేదన, మధ్యతరగతి బ్రతుకు
-                      సిత్రాలు, ఉద్యోగ వేటలో నిరుద్యోగుల అగచాట్లు.... గల్ఫ్
-                      మోసాలు.. సమాజంలో మహిళలు, చిన్నారులపై అఘాయిత్యాలు, చెడు
-                      దారిలో పయనిస్తున్న యువత , సంచలన రాజకీయ విశేషాలు, ప్రపంచ
-                      వింతలు.... ఇలాంటి మరెన్నో విషయాలను నిర్భయంగా ప్రజల చెంతకు
-                      తీసుకు వచ్చే ఏకైక వేదిక.....
-                    </p> */}
-                    {/* <p style={{ textAlign: "justify" }}>
-                      Lorem Ipsum is simply dummy text of the printing and type
-                      setting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since when an unknown printer
-                      took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries,
-                      but also the leap into electronic typesetting, remaining
-                      essentially unchanged.
-                    </p> */}
-                    {/* <p style={{ textAlign: "justify" }}>
-                      Lorem Ipsum is simply dummy text of the printing and type
-                      setting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since when an unknown printer
-                      took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries,
-                      but also the leap into electronic typesetting, remaining
-                      essentially unchanged.
-                    </p> */}
                   </div>
                 </div>
               </div>
@@ -112,43 +83,43 @@ const Page = () => {
         <div className="row">
           <div className="col-lg-12 col-md-12">
             <div className="d-flex justify-content-start align-items-center  my-2">
-              <img src="assets/images/youtubes.png" height={20} alt="img" />
-              <a href="https://www.youtube.com/@alikidinews" target="_blank">
+              <Image src="/assets/images/youtubes.png" width={50} height={20} alt="img" />
+              <Link href="https://www.youtube.com/@alikidinews" target="_blank">
                 {" "}
                 <h6 className="mx-2" style={{ color: "#e5342c" }}>
                   www.youtube.com/@alikidinews
                 </h6>
-              </a>
+              </Link>
             </div>
             <div className="d-flex justify-content-start align-items-center   my-2">
-              <img src="assets/images/facebook.png" height={35} alt="img" />
-              <a
+              <Image src="/assets/images/facebook.png" width={35} height={35} alt="img" />
+              <Link
                 href="https://www.facebook.com/profile.php?id=100092603236788"
                 target="_blank"
               >
                 <h6 className="mx-2" style={{ color: "#e5342c" }}>
                   www.facebook.com/@alikidinews
                 </h6>
-              </a>
+              </Link>
             </div>
             <div className="d-flex justify-content-start align-items-center  my-2">
-              <img src="assets/images/insta.png" height={40} alt="img" />
-              <a
+              <Image src="/assets/images/insta.png" width={45} height={40} alt="img" />
+              <Link
                 href="https://instagram.com/alikidinews?igshid=ZGUzMzM3NWJiOQ=="
                 target="_blank"
               >
                 <h6 className="mx-2" style={{ color: "#e5342c" }}>
                   www.instagram.com/@alikidinews
                 </h6>
-              </a>
+              </Link>
             </div>
             <div className="d-flex justify-content-start align-items-center  my-2">
-              <img src="assets/images/twitter.png" height={35} alt="img" />
-              <a href="https://twitter.com/alikidinews" target="_blank">
+              <Image src="/assets/images/twitter.png" width={35} height={35} alt="img" />
+              <Link href="https://twitter.com/alikidinews" target="_blank">
                 <h6 className="mx-2" style={{ color: "#e5342c" }}>
                   www.twitter.com/@alikidinews
                 </h6>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
