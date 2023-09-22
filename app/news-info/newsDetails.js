@@ -10,33 +10,22 @@ import { WhatsappIcon, WhatsappShareButton } from "react-share";
 import { newsUpdate, updateNewsComment } from "../redux/news/NewsSlice";
 import { Baseurl } from "../../config/BaseUrl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const NewsDetails = ({ newsitem, newsUrl }) => {
+
+    console.log(newsUrl, "newsUrl");
+    
     const { latestFourNews, latestNews } = useSelector(
         (store) => store.news
     );
 
     const { universalTags } = useSelector((store) => store.universaltag);
     const { loginData } = useSelector((store) => store.auth);
-
-    // let newsSingle = {};
-    // let newsSlider1 = [];
-    // let errorMassage1 = "";
-    // let whatsappMassage1 = "";
-    // let whatsappMas1 = "";
-    // let name1 = loginData.name;
-    // let email1 = loginData.email;
-    // let mobile1 = loginData.mobile;
-    // let shareShow1 = false;
-    // let comment1 = "";
-    // let youtubeLink1 = "";
-    // let twitterLink1 = "";
-    // let commentArray1 = [];
-
     const [newsSingle, setNewsSingle] = useState(newsitem);
     const [newsSlider1, setnewsSlider1] = useState(newsitem.slider);
     const [errorMassage, setErrorMassage] = useState("");
-    const [whatsappMassage, setWhatsappMassage] = useState(`http://localhost:3000/news-info/${newsUrl}`);
+    const [whatsappMassage, setWhatsappMassage] = useState(`https://project-alikidi.vercel.app/news-info/${newsUrl}`);
     const [whatsappMas, setWhatsappMas] = useState("");
     const [name, setName] = useState(loginData.name);
     const [email, setEmail] = useState(loginData.email);
@@ -184,7 +173,7 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                                                     style={{ verticalAlign: "middle" }}
                                                                 />
                                                                 <span className="ts-social-title">
-                                                                    WHAT'S APP
+                                                                    {` WHAT'S APP`}
                                                                 </span>
                                                             </WhatsappShareButton>
                                                         </a>
@@ -245,11 +234,11 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                         //   Autoplay,
                                         // ]}
                                         loop={true}
-                                        autoplay={{
-                                            delay: 2000,
-                                            disableOnInteraction: false,
-                                            pauseOnMouseEnter: true,
-                                        }}
+                                        // autoplay={{
+                                        //     delay: 2000,
+                                        //     disableOnInteraction: false,
+                                        //     pauseOnMouseEnter: true,
+                                        // }}
                                         className="homeSlider mt-2"
                                     >
                                         {newsSlider1.map((image, index) => (
@@ -362,7 +351,7 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                                         <a href={`${whatsappMassage}`} target="_blank">
                                                             <i className="fa fa-whatsapp" />
                                                             <span className="ts-social-title">
-                                                                what's app
+                                                                {`what's app`}
                                                             </span>
                                                         </a>
                                                     </li>
@@ -435,13 +424,13 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                         <Swiper
                                             draggable={true}
                                             spaceBetween={10}
-                                            modules={Autoplay}
+                                            // modules={Autoplay}
                                             // loop={true}
-                                            autoplay={{
-                                                delay: 2000,
-                                                disableOnInteraction: false,
-                                                pauseOnMouseEnter: true,
-                                            }}
+                                            // autoplay={{
+                                            //     delay: 2000,
+                                            //     disableOnInteraction: false,
+                                            //     pauseOnMouseEnter: true,
+                                            // }}
                                             breakpoints={{
                                                 360: {
                                                     slidesPerView: 2,
@@ -488,7 +477,7 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                                                         style={{ cursor: "pointer" }}
                                                                     >
                                                                         <Link
-                                                                            href={`/news-post-info/${news.slugUrl}`}
+                                                                            href={`/news-info/${news.slugUrl}`}
                                                                             onClick={(e) => viewCount(e, news)}
                                                                         >
                                                                             {news.newsTitle}
@@ -654,7 +643,7 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                                 <li className="clearfix" key={index}>
                                                     <div className="utf_post_block_style post-float clearfix">
                                                         <Link
-                                                            href={`/news-post-info/${news.slugUrl}`}
+                                                            href={`/news-info/${news.slugUrl}`}
                                                             onClick={(e) => viewCount(e, news)}
                                                         >
                                                             <div className="utf_post_thumb">
@@ -675,7 +664,7 @@ const NewsDetails = ({ newsitem, newsUrl }) => {
                                                         <div className="utf_post_content">
                                                             <h2 className="utf_post_title title-small">
                                                                 <Link
-                                                                    href={`/news-post-info/${news.slugUrl}`}
+                                                                    href={`/news-info/${news.slugUrl}`}
                                                                     onClick={(e) => viewCount(e, news)}
                                                                 >
                                                                     {news.newsTitle}

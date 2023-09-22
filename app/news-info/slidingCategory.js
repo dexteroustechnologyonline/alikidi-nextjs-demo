@@ -2,17 +2,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { newsUpdate } from "../redux/news/NewsSlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const SlidingCategory = () => {
   const { latestNewsFive, latestNewsSix } = useSelector((store) => store.news);
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const viewCount = (e, news) => {
-    const formData = {
-      newsid: news._id,
-      _id: news._id,
-      numberofViews: Number(news.numberofViews) + 1,
-    };
-    dispatch(newsUpdate(formData));
+  const handleclick = (news) => {
+    router.push(`/news-info/${news.slugUrl}`);
   };
   return (
     <>
@@ -33,20 +30,21 @@ const SlidingCategory = () => {
                       <div
                         className="utf_post_block_style utf_post_float_half clearfix"
                         key={news._id}
+                        style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                       >
                         {/* <Link
                           href={`/news-post-info/${news.slugUrl}`}
                           onClick={(e) => viewCount(e, news)}
                         > */}
-                          <div className="utf_post_thumb">
-                            <a>
-                              <img
-                                className="img-fluid"
-                                src={news.thumbnail}
-                                alt=""
-                              />
-                            </a>
-                          </div>
+                        <div className="utf_post_thumb">
+                          <a>
+                            <img
+                              className="img-fluid"
+                              src={news.thumbnail}
+                              alt=""
+                            />
+                          </a>
+                        </div>
                         {/* </Link> */}
                         <div className="utf_post_content">
                           <h2 className="utf_post_title">
@@ -54,10 +52,10 @@ const SlidingCategory = () => {
                               href={`/news-post-info/${news.slugUrl}`}
                               onClick={(e) => viewCount(e, news)}
                             > */}
-                              <a>{news.newsTitle}</a>
+                            <a>{news.newsTitle}</a>
                             {/* </Link> */}
                           </h2>
-                          
+
                           <p style={{ textAlign: "justify" }}>
                             {news.newsMainContent}
                           </p>
@@ -77,21 +75,21 @@ const SlidingCategory = () => {
                   <div className="utf_list_post_block">
                     <ul className="utf_list_post review-post-list">
                       {latestNewsSix.map((news) => (
-                        <li className="clearfix" key={news._id}>
+                        <li className="clearfix" key={news._id} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                           <div className="utf_post_block_style post-float clearfix">
                             {/* <Link
                               href={`/news-post-info/${news.slugUrl}`}
                               onClick={(e) => viewCount(e, news)}
                             > */}
-                              <div className="utf_post_thumb">
-                                <a>
-                                  <img
-                                    className="img-fluid"
-                                    src={news.thumbnail}
-                                    alt=""
-                                  />
-                                </a>
-                              </div>
+                            <div className="utf_post_thumb">
+                              <a>
+                                <img
+                                  className="img-fluid"
+                                  src={news.thumbnail}
+                                  alt=""
+                                />
+                              </a>
+                            </div>
                             {/* </Link> */}
                             <div className="utf_post_content">
                               <h2 className="utf_post_title">
@@ -99,7 +97,7 @@ const SlidingCategory = () => {
                                   href={`/news-post-info/${news.slugUrl}`}
                                   onClick={(e) => viewCount(e, news)}
                                 > */}
-                                  <a>{news.newsTitle.slice(0, 45) + "..."}</a>
+                                <a>{news.newsTitle.slice(0, 45) + "..."}</a>
                                 {/* </Link> */}
                               </h2>
                               <div className="utf_post_meta">
@@ -116,7 +114,7 @@ const SlidingCategory = () => {
                         </li>
                       ))}
 
-                      
+
                     </ul>
                   </div>
                 </div>
@@ -127,7 +125,7 @@ const SlidingCategory = () => {
                   <div className="utf_newsletter_block">
                     <div className="utf_newsletter_introtext">
                       <h4>Subscribe Newsletter!</h4>
-                   
+
                     </div>
                     <div className="utf_newsletter_form">
                       <div className="form-group">
@@ -141,7 +139,7 @@ const SlidingCategory = () => {
                         />
                         <button className="btn btn-primary">Subscribe</button>
                       </div>
-                   
+
                     </div>
                   </div>
                 </div>

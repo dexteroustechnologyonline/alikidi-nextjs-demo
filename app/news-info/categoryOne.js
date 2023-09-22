@@ -2,6 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from "next/navigation";
 import "swiper/css";
 import { newsUpdate } from "../redux/news/NewsSlice";
 import Link from "next/link";
@@ -17,14 +18,10 @@ const CategoryOne = () => {
   } = useSelector((store) => store.news);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const viewCount = (e, news) => {
-    const formData = {
-      newsid: news._id,
-      _id: news._id,
-      numberofViews: Number(news.numberofViews) + 1,
-    };
-    dispatch(newsUpdate(formData));
+  const handleclick = (news) => {
+    router.push(`/news-info/${news.slugUrl}`);
   };
 
   return (
@@ -41,7 +38,7 @@ const CategoryOne = () => {
                   <li className="nav-item">
                     <a
                       className="nav-link animated fadeIn active show"
-                      
+
                       data-toggle="tab"
                     >
                       <span className="tab-head">
@@ -72,22 +69,23 @@ const CategoryOne = () => {
                           <div
                             className="utf_post_block_style clearfix"
                             key={index}
+                            style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                           >
                             {/* <Link
                               href={`/news-post-info/${news.slugUrl}`}
                               onClick={(e) => viewCount(e, news)}
                             > */}
-                              <div className="utf_post_thumb">
-                                <a>
-                                  <img
-                                    className="img-fluid"
-                                    src={news.thumbnail}
-                                    alt=""
-                                  />
-                                </a>
-                              </div>
+                            <div className="utf_post_thumb">
+                              <a>
+                                <img
+                                  className="img-fluid"
+                                  src={news.thumbnail}
+                                  alt=""
+                                />
+                              </a>
+                            </div>
                             {/* </Link> */}
-                         
+
                             <div className="utf_post_content">
                               <h2
                                 className="utf_post_title"
@@ -97,11 +95,11 @@ const CategoryOne = () => {
                                   href={`/news-post-info/${news.slugUrl}`}
                                   onClick={(e) => viewCount(e, news)}
                                 > */}
-                                  <a>{news.newsTitle}</a>
+                                <a>{news.newsTitle}</a>
                                 {/* </Link> */}
                               </h2>
-                      
-                              
+
+
                               <p style={{ textAlign: "justify" }}>
                                 {news.newsMainContent}
                               </p>
@@ -113,22 +111,22 @@ const CategoryOne = () => {
                         <div className="utf_list_post_block">
                           <ul className="utf_list_post">
                             {technologyNewsFour.map((news, index) => (
-                              <li className="clearfix" key={index}>
+                              <li className="clearfix" key={index} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                                 <div className="utf_post_block_style post-float clearfix">
                                   {/* <Link
                                     href={`/news-post-info/${news.slugUrl}`}
                                     onClick={(e) => viewCount(e, news)}
                                   > */}
-                                    <div className="utf_post_thumb">
-                                      <a>
-                                        <img
-                                          className="img-fluid"
-                                          src={news.thumbnail}
-                                          alt=""
-                                          style={{ cursor: "pointer" }}
-                                        />
-                                      </a>
-                                    </div>
+                                  <div className="utf_post_thumb">
+                                    <a>
+                                      <img
+                                        className="img-fluid"
+                                        src={news.thumbnail}
+                                        alt=""
+                                        style={{ cursor: "pointer" }}
+                                      />
+                                    </a>
+                                  </div>
                                   {/* </Link> */}
                                   <div className="utf_post_content">
                                     <h2 className="utf_post_title title-small">
@@ -136,12 +134,12 @@ const CategoryOne = () => {
                                         href={`/news-post-info/${news.slugUrl}`}
                                         onClick={(e) => viewCount(e, news)}
                                       > */}
-                                        <a style={{ cursor: "pointer" }}>
-                                          {news.newsTitle}
-                                        </a>
+                                      <a style={{ cursor: "pointer" }}>
+                                        {news.newsTitle}
+                                      </a>
                                       {/* </Link> */}
                                     </h2>
-                                    
+
                                   </div>
                                 </div>
                               </li>
@@ -336,21 +334,22 @@ const CategoryOne = () => {
                       <div
                         className="utf_post_overaly_style clearfix"
                         key={index}
+                        style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                       >
                         {/* <Link
                           href={`/news-post-info/${news.slugUrl}`}
                           onClick={(e) => viewCount(e, news)}
                           style={{ cursor: "pointer" }}
                         > */}
-                          <div className="utf_post_thumb">
-                            <a>
-                              <img
-                                className="img-fluid"
-                                src={news.thumbnail}
-                                alt=""
-                              />
-                            </a>
-                          </div>
+                        <div className="utf_post_thumb">
+                          <a>
+                            <img
+                              className="img-fluid"
+                              src={news.thumbnail}
+                              alt=""
+                            />
+                          </a>
+                        </div>
                         {/* </Link> */}
                         <div className="utf_post_content">
                           <h2
@@ -361,38 +360,38 @@ const CategoryOne = () => {
                               href={`/news-post-info/${news.slugUrl}`}
                               onClick={(e) => viewCount(e, news)}
                             > */}
-                              <a>{news.newsTitle}</a>
+                            <a>{news.newsTitle}</a>
                             {/* </Link> */}
                           </h2>
-                   
+
                         </div>
                       </div>
                     ))}
                     <div className="utf_list_post_block">
                       <ul className="utf_list_post">
                         {latestFourNews.map((news, index) => (
-                          <li className="clearfix" key={index}>
+                          <li className="clearfix" key={index} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                             <div className="utf_post_block_style post-float clearfix">
                               {/* <Link
                                 href={`/news-post-info/${news.slugUrl}`}
                                 onClick={(e) => viewCount(e, news)}
                               > */}
-                                <div className="utf_post_thumb">
-                                  <a>
-                                    <img
-                                      className="img-fluid"
-                                      src={news.thumbnail}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                    />
-                                  </a>
-                                  {/* <a
+                              <div className="utf_post_thumb">
+                                <a>
+                                  <img
+                                    className="img-fluid"
+                                    src={news.thumbnail}
+                                    alt=""
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </a>
+                                {/* <a
                                     className="utf_post_cat"
                                     style={{ cursor: "pointer" }}
                                   >
                                     {news.category}
                                   </a> */}
-                                </div>
+                              </div>
                               {/* </Link> */}
                               <div className="utf_post_content">
                                 <h2 className="utf_post_title title-small">
@@ -400,12 +399,12 @@ const CategoryOne = () => {
                                     to={`/news-post-info/${news.slugUrl}`}
                                     onClick={(e) => viewCount(e, news)}
                                   > */}
-                                    <a style={{ cursor: "pointer" }}>
-                                      {news.newsTitle}
-                                    </a>
+                                  <a style={{ cursor: "pointer" }}>
+                                    {news.newsTitle}
+                                  </a>
                                   {/* </Link> */}
                                 </h2>
-                               
+
                               </div>
                             </div>
                           </li>
@@ -418,21 +417,22 @@ const CategoryOne = () => {
                       <div
                         className="utf_post_overaly_style clearfix"
                         key={index}
+                        style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                       >
                         {/* <Link
                           href={`/news-post-info/${news.slugUrl}`}
                           onClick={(e) => viewCount(e, news)}
                           style={{ cursor: "pointer" }}
                         > */}
-                          <div className="utf_post_thumb">
-                            <a>
-                              <img
-                                className="img-fluid"
-                                src={news.thumbnail}
-                                alt=""
-                              />
-                            </a>
-                          </div>
+                        <div className="utf_post_thumb">
+                          <a>
+                            <img
+                              className="img-fluid"
+                              src={news.thumbnail}
+                              alt=""
+                            />
+                          </a>
+                        </div>
                         {/* </Link> */}
                         <div className="utf_post_content">
                           <h2
@@ -443,17 +443,17 @@ const CategoryOne = () => {
                               href={`/news-post-info/${news.slugUrl}`}
                               onClick={(e) => viewCount(e, news)}
                             > */}
-                              <a>{news.newsTitle}</a>
+                            <a>{news.newsTitle}</a>
                             {/* </Link> */}
                           </h2>
-                          
+
                         </div>
                       </div>
                     ))}
                     <div className="utf_list_post_block">
                       <ul className="utf_list_post">
                         {latestNewxtFourNews.map((news, index) => (
-                          <li className="clearfix" key={index}>
+                          <li className="clearfix" key={index} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                             <div className="utf_post_block_style post-float clearfix">
                               <div className="utf_post_thumb">
                                 <a>
@@ -464,7 +464,7 @@ const CategoryOne = () => {
                                     style={{ cursor: "pointer" }}
                                   />
                                 </a>
-                           
+
                               </div>
                               <div className="utf_post_content">
                                 <h2 className="utf_post_title title-small">
@@ -472,9 +472,9 @@ const CategoryOne = () => {
                                     href={`/news-post-info/${news.slugUrl}`}
                                     onClick={(e) => viewCount(e, news)}
                                   > */}
-                                    <a style={{ cursor: "pointer" }}>
-                                      {news.newsTitle}
-                                    </a>
+                                  <a style={{ cursor: "pointer" }}>
+                                    {news.newsTitle}
+                                  </a>
                                   {/* </Link> */}
                                 </h2>
                                 {/* <div className="utf_post_meta">
@@ -547,19 +547,19 @@ const CategoryOne = () => {
                   <Swiper
                     draggable={true}
                     spaceBetween={10}
-                    modules={Autoplay}
-                    // loop={true}
-                    autoplay={{
-                      delay: 2000,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                    }}
+                  // modules={Autoplay}
+                  // loop={true}
+                  // autoplay={{
+                  //   delay: 2000,
+                  //   disableOnInteraction: false,
+                  //   pauseOnMouseEnter: true,
+                  // }}
                   >
                     {latestFourNews.map((news, index) => (
-                      <SwiperSlide key={index}>
+                      <SwiperSlide key={index} >
                         <div
                           className="utf_post_overaly_style clearfix"
-                         
+                          style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                         >
                           <div className="utf_post_thumb">
                             <a>
@@ -577,10 +577,10 @@ const CategoryOne = () => {
                                 href={`/news-post-info/${news.slugUrl}`}
                                 onClick={(e) => viewCount(e, news)}
                               > */}
-                                <a>{news.newsTitle}</a>
+                              <a>{news.newsTitle}</a>
                               {/* </Link> */}
                             </h2>
-                       
+
                           </div>
                         </div>
                       </SwiperSlide>
@@ -590,7 +590,7 @@ const CategoryOne = () => {
                   <div className="utf_list_post_block">
                     <ul className="utf_list_post">
                       {latestFourNews.map((news, index) => (
-                        <li className="clearfix" key={index}>
+                        <li className="clearfix" key={index} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                           <div className="utf_post_block_style post-float clearfix">
                             <div className="utf_post_thumb">
                               <a>
@@ -601,7 +601,7 @@ const CategoryOne = () => {
                                   style={{ cursor: "pointer" }}
                                 />
                               </a>
-                            
+
                             </div>
                             <div className="utf_post_content">
                               <h2 className="utf_post_title title-small">
@@ -609,12 +609,12 @@ const CategoryOne = () => {
                                   href={`/news-post-info/${news.slugUrl}`}
                                   onClick={(e) => viewCount(e, news)}
                                 > */}
-                                  <a style={{ cursor: "pointer" }}>
-                                    {news.newsTitle}
-                                  </a>
+                                <a style={{ cursor: "pointer" }}>
+                                  {news.newsTitle}
+                                </a>
                                 {/* </Link> */}
                               </h2>
-                             
+
                             </div>
                           </div>
                         </li>
@@ -629,33 +629,33 @@ const CategoryOne = () => {
                   <Swiper
                     draggable={true}
                     spaceBetween={10}
-                    modules={Autoplay}
-                    // loop={true}
-                    autoplay={{
-                      delay: 2000,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                    }}
+                  // modules={Autoplay}
+                  // loop={true}
+                  // autoplay={{
+                  //   delay: 2000,
+                  //   disableOnInteraction: false,
+                  //   pauseOnMouseEnter: true,
+                  // }}
                   >
                     {technologyNewsFour.map((news, index) => (
                       <SwiperSlide key={index}>
                         <div
                           className="utf_post_overaly_style clearfix"
-                          
+                          style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                         >
                           {/* <Link
                             href={`/news-post-info/${news.slugUrl}`}
                             onClick={(e) => viewCount(e, news)}
                           > */}
-                            <div className="utf_post_thumb">
-                              <a>
-                                <img
-                                  className="img-fluid"
-                                  src={news.thumbnail}
-                                  alt=""
-                                />
-                              </a>
-                            </div>
+                          <div className="utf_post_thumb">
+                            <a>
+                              <img
+                                className="img-fluid"
+                                src={news.thumbnail}
+                                alt=""
+                              />
+                            </a>
+                          </div>
                           {/* </Link> */}
                           <div className="utf_post_content">
                             <h2 className="utf_post_title">
@@ -663,10 +663,10 @@ const CategoryOne = () => {
                                 href={`/news-post-info/${news.slugUrl}`}
                                 onClick={(e) => viewCount(e, news)}
                               > */}
-                                <a>{news.newsTitle}</a>
+                              <a>{news.newsTitle}</a>
                               {/* </Link> */}
                             </h2>
-                        
+
                           </div>
                         </div>
                       </SwiperSlide>

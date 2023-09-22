@@ -2,6 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { newsUpdate } from "../redux/news/NewsSlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CategoryTwo = () => {
   const {
@@ -13,14 +14,10 @@ const CategoryTwo = () => {
     healthNewsOne,
   } = useSelector((store) => store.news);
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const viewCount = (e, news) => {
-    const formData = {
-      newsid: news._id,
-      _id: news._id,
-      numberofViews: Number(news.numberofViews) + 1,
-    };
-    dispatch(newsUpdate(formData));
+  const handleclick = (news) => {
+    router.push(`/news-info/${news.slugUrl}`);
   };
   return (
     <>
@@ -36,6 +33,7 @@ const CategoryTwo = () => {
                   <div
                     className="utf_post_overaly_style clearfix"
                     key={news._id}
+                    style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                   >
                     <div className="utf_post_thumb">
                       <a>
@@ -59,7 +57,7 @@ const CategoryTwo = () => {
                 <div className="utf_list_post_block">
                   <ul className="utf_list_post">
                     {travellingNewsThree.map((news) => (
-                      <li className="clearfix" key={news._id}>
+                      <li className="clearfix" key={news._id} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                         <div className="utf_post_block_style post-float clearfix">
                           <div className="utf_post_thumb">
                             <a>
@@ -97,6 +95,7 @@ const CategoryTwo = () => {
                   <div
                     className="utf_post_overaly_style clearfix"
                     key={news._id}
+                    style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                   >
                     <div className="utf_post_thumb">
                       <a>
@@ -119,7 +118,7 @@ const CategoryTwo = () => {
                 <div className="utf_list_post_block">
                   <ul className="utf_list_post">
                     {foodNewsThree.map((news) => (
-                      <li className="clearfix" key={news._id}>
+                      <li className="clearfix" key={news._id} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                         <div className="utf_post_block_style post-float clearfix">
                           <div className="utf_post_thumb">
                             <a>
@@ -157,6 +156,7 @@ const CategoryTwo = () => {
                   <div
                     className="utf_post_overaly_style clearfix"
                     key={news._id}
+                    style={{ cursor: "pointer" }} onClick={() => handleclick(news)}
                   >
                     <div className="utf_post_thumb">
                       <a>
@@ -179,7 +179,7 @@ const CategoryTwo = () => {
                 <div className="utf_list_post_block">
                   <ul className="utf_list_post">
                     {healthNewsThree.map((news) => (
-                      <li className="clearfix" key={news._id}>
+                      <li className="clearfix" key={news._id} style={{ cursor: "pointer" }} onClick={() => handleclick(news)}>
                         <div className="utf_post_block_style post-float clearfix">
                           <div className="utf_post_thumb">
                             <a>
